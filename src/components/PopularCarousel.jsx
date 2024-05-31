@@ -7,15 +7,16 @@ import {
 } from "react-native";
 import React from "react";
 import { Ionicons } from "@expo/vector-icons";
-import { AntDesign } from '@expo/vector-icons';
+import { Entypo } from '@expo/vector-icons';
+
 
 export default function PopularCarousel() {
   const places = [
-    { name: "Place 1", image: "https://picsum.photos/200/300", rating: 4.5 },
-    { name: "Place 2", image: "https://picsum.photos/200/300", rating: 4.8 },
-    { name: "Place 2", image: "https://picsum.photos/200/300", rating: 4.8 },
-    { name: "Place 2", image: "https://picsum.photos/200/300", rating: 4.8 },
-    { name: "Place 2", image: "https://picsum.photos/200/300", rating: 4.8 },
+    { name: "Alley place", image: "https://picsum.photos/200/300", rating: 4.5 },
+    { name: "Coeurdes Alpes", image: "https://picsum.photos/200/300", rating: 4.8 },
+    { name: "Swiz", image: "https://picsum.photos/200/300", rating: 4.8 },
+    { name: "nepal", image: "https://picsum.photos/200/300", rating: 4.8 },
+    { name: "kandy", image: "https://picsum.photos/200/300", rating: 4.8 },
     { name: "Place 2", image: "https://picsum.photos/200/300", rating: 4.8 },
     { name: "Place 2", image: "https://picsum.photos/200/300", rating: 4.8 },
     { name: "Place 2", image: "https://picsum.photos/200/300", rating: 4.8 },
@@ -37,7 +38,7 @@ export default function PopularCarousel() {
               <Text style={styles.text}>{place.name}</Text>
               <View style={styles.textContainer}>
                 <View style={styles.ratingContainer}>
-                <AntDesign name="star" size={24} color="yellow" />
+                <Entypo name="star" size={24} color="yellow" />
                   <Text style={styles.ratingText}>{place.rating}</Text>
                 </View>
                 <View style={styles.likeContainer}>
@@ -62,7 +63,7 @@ const styles = StyleSheet.create({
     width: 200,
     height: 250,
     marginRight: 10,
-    borderRadius: 10,
+    borderRadius: 20,
     overflow: "hidden",
   },
   image: {
@@ -77,7 +78,7 @@ const styles = StyleSheet.create({
   },
   text: {
     color: "white",
-    fontSize: 22,
+    fontSize: 18,
     backgroundColor:'#868B8E',
     alignSelf: "flex-start",
     borderRadius:20,
