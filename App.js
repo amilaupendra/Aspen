@@ -5,6 +5,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Explore from './src/screens/Explore'
 import Destination from './src/screens/Destination';
+import BottomNav from './src/components/BottomNav';
 
 const Stack = createNativeStackNavigator();
 

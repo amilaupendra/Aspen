@@ -3,6 +3,7 @@ import { StyleSheet, Text, View, TextInput, TouchableOpacity } from 'react-nativ
 import { AntDesign } from '@expo/vector-icons';
 import PopularCarousel from '../components/PopularCarousel';
 import RecommendedCarousel from '../components/RecommendedCarousel';
+import BottomNav from '../components/BottomNav';
 
 export default function ExploreHeader() {
     const [selectedTab, setSelectedTab]= useState('location');
@@ -57,6 +58,7 @@ export default function ExploreHeader() {
                 <Text style={styles.Populartext}>Recommended</Text>
                 </View>
                 <RecommendedCarousel/>
+                <BottomNav/>
                 </>
             ):console.log('gg')}
     </View>
