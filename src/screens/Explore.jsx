@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, TextInput, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, TextInput, TouchableOpacity, ScrollView } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
 import PopularCarousel from '../components/PopularCarousel';
 import RecommendedCarousel from '../components/RecommendedCarousel';
@@ -13,6 +13,7 @@ export default function ExploreHeader() {
     }
   return (
     <View style={styles.container}>
+      <ScrollView contentContainerStyle={styles.scrollContainer}>
       <View style={styles.locationContainer}>
         <View style={styles.exploreAspen}>
         <Text style={styles.exploreText}>Explore</Text>
@@ -58,17 +59,21 @@ export default function ExploreHeader() {
                 <Text style={styles.Populartext}>Recommended</Text>
                 </View>
                 <RecommendedCarousel/>
-                <BottomNav/>
                 </>
+                
+                
             ):console.log('gg')}
+            </ScrollView>
+            <BottomNav/>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    padding: 20,
+    // padding: 20,
     backgroundColor: 'white',
+    flex:1,
   },
   locationContainer: {
     flexDirection: 'row',
