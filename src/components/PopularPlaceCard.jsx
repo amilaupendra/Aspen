@@ -7,12 +7,15 @@ import {
   Modal,
   Image,
   TouchableOpacity,
+  Alert,
+  ScrollView,
 } from "react-native";
 import { useState } from "react";
 import { Ionicons } from "@expo/vector-icons";
 import { Entypo } from "@expo/vector-icons";
 import { AntDesign } from "@expo/vector-icons";
 import Facilities from "./Facilities";
+
 
 export default function DetailsModal({ visible, place, onClose }) {
   if (!place) return null;
@@ -30,6 +33,7 @@ export default function DetailsModal({ visible, place, onClose }) {
       visible={visible}
       onRequestClose={onClose}
     >
+        
       <View style={styles.centeredView}>
         <View style={styles.modalView}>
           <TouchableOpacity style={styles.closeButton} onPress={onClose}>
@@ -78,9 +82,19 @@ export default function DetailsModal({ visible, place, onClose }) {
               />
             </Text>
           </TouchableOpacity>
+          <Text style={{fontWeight:'bold', marginTop:20, alignSelf:'flex-start', fontSize:24}}>Facilitiues</Text>
           <Facilities />
+          <View style={styles.bookContainer}>
+            <View style={styles.priceContainer}>
+                <Text style={{fontWeight:'bold'}}>Price</Text>
+                <Text style={{fontWeight:'bold', fontSize:30,color:'#30cf86'}}>$199</Text>
+            </View>
+            <TouchableOpacity  style={styles.bookButton} onPress={()=>Alert.alert('Under Developing Stage')}>
+            <Text style={{fontWeight:'bold', fontSize:20,color:'#fff'}}>Book Now</Text>
+            <AntDesign name="arrowright" size={24} color="#fff" />
+            </TouchableOpacity>
+          </View>
         </View>
-        
       </View>
       
     </Modal>
@@ -194,4 +208,20 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignSelf: "flex-start",
   },
+  bookButton:{
+    flexDirection:'row',
+    backgroundColor:'#1dafe2',
+    width:'60%',
+    height:60,
+    borderRadius:20,
+    alignItems:'center',
+    justifyContent:'center',
+  },
+  bookContainer:{
+    marginTop:40,
+    width:'100%',
+    flexDirection:'row',
+    justifyContent:'space-between'
+  }
 });
+  
