@@ -4,12 +4,14 @@ import {
   View,
   ImageBackground,
   ScrollView,
+  TouchableOpacity,
 } from "react-native";
-import React from "react";
+import  {React,useState} from "react";
 import { Ionicons } from "@expo/vector-icons";
 import { Entypo } from '@expo/vector-icons';
 import Place1 from '../../assets/place1.jpg';
 import Place2 from '../../assets/place2.jpg';
+import PopularPlaceCard from '../components/PopularPlaceCard';
 
 
 
@@ -31,12 +33,19 @@ export default function PopularCarousel() {
     // { name: "Place 2", image: "https://picsum.photos/200/300", rating: 4.8 },
     // { name: "Place 2", image: "https://picsum.photos/200/300", rating: 4.8 },
   ];
+  const [modalVisible, setModalVisible] = useState(false);
+  const [selectedPlace, setSelectedPlace] = useState(null);
+ 
+  const handlePress = (place) => {
+    setSelectedPlace(place);
+    setModalVisible(true);
+  };
 
   return (
     <View style={styles.container}>
       <ScrollView horizontal showsHorizontalScrollIndicator={false}>
         {places.map((place, index) => (
-          <View key={index} style={styles.carouselItem}>
+          <TouchableOpacity key={index} style={styles.carouselItem} onPress={() => handlePress(place)}>
             <ImageBackground
               source={place.image}
               resizeMode="cover"
@@ -53,9 +62,14 @@ export default function PopularCarousel() {
                 </View>
               </View>
             </ImageBackground>
-          </View>
+          </TouchableOpacity>
         ))}
       </ScrollView>
+      <PopularPlaceCard
+        visible={modalVisible}
+        place={selectedPlace}
+        onClose={() => setModalVisible(false)}
+      />
     </View>
   );
 }
