@@ -8,21 +8,28 @@ import {
 import React from "react";
 import { Ionicons } from "@expo/vector-icons";
 import { Entypo } from '@expo/vector-icons';
+import Place1 from '../../assets/place1.jpg';
+import Place2 from '../../assets/place2.jpg';
+
+
+
+
+
+import Place3 from '../../assets/place3.jpg';
 
 
 export default function PopularCarousel() {
   const places = [
-    { name: "Alley place", image: "https://picsum.photos/200/300", rating: 4.5 },
-    { name: "Coeurdes Alpes", image: "https://picsum.photos/200/300", rating: 4.8 },
-    { name: "Swiz", image: "https://picsum.photos/200/300", rating: 4.8 },
-    { name: "nepal", image: "https://picsum.photos/200/300", rating: 4.8 },
-    { name: "kandy", image: "https://picsum.photos/200/300", rating: 4.8 },
-    { name: "Place 2", image: "https://picsum.photos/200/300", rating: 4.8 },
-    { name: "Place 2", image: "https://picsum.photos/200/300", rating: 4.8 },
-    { name: "Place 2", image: "https://picsum.photos/200/300", rating: 4.8 },
-    { name: "Place 2", image: "https://picsum.photos/200/300", rating: 4.8 },
-    { name: "Place 2", image: "https://picsum.photos/200/300", rating: 4.8 },
-    { name: "Place 2", image: "https://picsum.photos/200/300", rating: 4.8 },
+    { name: "Alley place", image: Place1, rating: 4.5 },
+    { name: "Swiz", image: Place2, rating: 4.8 },
+    { name: "nepal", image: Place3, rating: 4.8 },
+    // { name: "kandy", image: "https://picsum.photos/200/300", rating: 4.8 },
+    // { name: "Place 2", image: "https://picsum.photos/200/300", rating: 4.8 },
+    // { name: "Place 2", image: "https://picsum.photos/200/300", rating: 4.8 },
+    // { name: "Place 2", image: "https://picsum.photos/200/300", rating: 4.8 },
+    // { name: "Place 2", image: "https://picsum.photos/200/300", rating: 4.8 },
+    // { name: "Place 2", image: "https://picsum.photos/200/300", rating: 4.8 },
+    // { name: "Place 2", image: "https://picsum.photos/200/300", rating: 4.8 },
   ];
 
   return (
@@ -31,14 +38,14 @@ export default function PopularCarousel() {
         {places.map((place, index) => (
           <View key={index} style={styles.carouselItem}>
             <ImageBackground
-              source={{ uri: place.image }}
+              source={place.image}
               resizeMode="cover"
               style={styles.image}
             >
               <Text style={styles.text}>{place.name}</Text>
               <View style={styles.textContainer}>
                 <View style={styles.ratingContainer}>
-                <Entypo name="star" size={24} color="yellow" />
+                <Entypo name="star" size={20} color="#fadf05" />
                   <Text style={styles.ratingText}>{place.rating}</Text>
                 </View>
                 <View style={styles.likeContainer}>
@@ -78,7 +85,7 @@ const styles = StyleSheet.create({
   },
   text: {
     color: "white",
-    fontSize: 18,
+    fontSize: 16,
     backgroundColor:'#868B8E',
     alignSelf: "flex-start",
     borderRadius:20,

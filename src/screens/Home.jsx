@@ -9,12 +9,15 @@ import {
 import React from "react";
 import HomeImg from '../../assets/homeimg.jpg';
 import { StatusBar } from "expo-status-bar";
-
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 
 
 const Home = ({navigation}) => {
   
+  console.log(navigation); // Check if navigation prop is received
+
   
   return (
     <SafeAreaView style={styles.container}>

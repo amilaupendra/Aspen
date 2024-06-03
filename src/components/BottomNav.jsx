@@ -1,67 +1,70 @@
-import { StyleSheet, Text, View } from 'react-native';
-import React from 'react';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { Ionicons } from '@expo/vector-icons'; // Importing icons
-import Explore from '../screens/Explore'; // Correct import path
-import Home from '../screens/Home';
-import Destination from '../screens/Destination';
-
-const Tab = createBottomTabNavigator();
+import React, { useState, useEffect } from "react";
+import { View, StyleSheet, TouchableOpacity } from "react-native";
+import { Ionicons } from "@expo/vector-icons";
+import { useNavigation, useRoute } from '@react-navigation/native';
 
 export default function BottomNav() {
+  const navigation = useNavigation();
+  const route = useRoute();
+  const [selectedTab, setSelectedTab] = useState(route.name);
+
+  useEffect(() => {
+    setSelectedTab(route.name);
+  }, [route.name]);
+
+  const handlePress = (tabName, routeName) => {
+    if (routeName !== route.name) {
+      navigation.navigate(routeName);
+    }
+  };
+
   return (
-    <Tab.Navigator
-      screenOptions={({ route }) => ({
-        tabBarIcon: ({ focused, color, size }) => {
-          let iconName;
-
-          if (route.name === 'Home') {
-            iconName = focused ? 'home' : 'home-outline';
-          } else if (route.name === 'Destination') {
-            iconName = focused ? 'map' : 'map-outline';
-          } else if (route.name === 'Explore') {
-            iconName = focused ? 'heart' : 'heart-outline';
-          }else if (route.name === 'Profile') {
-            iconName = focused ? 'person' : 'person-outline';
-          }
-
-          return <Ionicons name={iconName} size={size} color={color} />;
-        },
-        tabBarActiveTintColor: 'blue',
-        tabBarInactiveTintColor: 'gray',
-        tabBarShowLabel: false,
-        headerShown: false
-        // tabBarStyle: styles.tabBar, // Applying custom style
-        // tabBarItemStyle: styles.tabBarItem, // Applying custom item style
-      })}
-    >
-      <Tab.Screen name="Home" component={Home} />
-      <Tab.Screen name="Destination" component={Destination} />
-      <Tab.Screen name="Explore" component={Explore} />
-      <Tab.Screen name="Profile" component={Explore} />
-    </Tab.Navigator>
+    <View style={styles.navbar}>
+      <TouchableOpacity
+        style={styles.navItem}
+        onPress={() => handlePress("Home", "Home")}
+      >
+        <Ionicons name="home" size={24} color={selectedTab === "Home" ? "#1dafe2" : "black"} />
+      </TouchableOpacity>
+      <TouchableOpacity
+        style={styles.navItem}
+        onPress={() => handlePress("Explore", "Explore")}
+      >
+        <Ionicons name="map" size={24} color={selectedTab === "Explore" ? "#1dafe2" : "black"} />
+      </TouchableOpacity>
+      <TouchableOpacity
+        style={styles.navItem}
+        onPress={() => handlePress("Destination", "Destination")}
+      >
+        <Ionicons name="heart-outline" size={24} color={selectedTab === "Destination" ? "#1dafe2" : "black"} />
+      </TouchableOpacity>
+      <TouchableOpacity
+        style={styles.navItem}
+        onPress={() => handlePress("Profile", "Profile")}
+      >
+        <Ionicons name="person" size={24} color={selectedTab === "Profile" ? "#1dafe2" : "black"} />
+      </TouchableOpacity>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
-  tabBar: {
-    backgroundColor: 'white',
-    borderTopLeftRadius: 20,
-    borderTopRightRadius: 10,
-    // overflow: 'hidden',
-    // position: 'absolute',
+  navbar: {
+    flexDirection: "row",
+    justifyContent: "space-around",
+    alignItems: "center",
+    backgroundColor: "#ffffff", // Change background color as per your preference
+    height: 60,
+    borderTopWidth: 1,
+    borderTopColor: "gray",
+    position: "absolute",
+    bottom: 0,
     left: 0,
     right: 0,
-    tabBar: 0,
-    elevation: 0,
-    height: 60,
-    shadowColor: '#000',
-    // shadowOffset: { width: 0, height: 10 },
-    // shadowOpacity: 0.12,
-    // shadowRadius: 10,
   },
-  tabBarItem: {
-    borderRadius: 20,
-    margin: 5,
+  navItem: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
   },
 });

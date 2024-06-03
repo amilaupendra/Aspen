@@ -4,6 +4,8 @@ import { AntDesign } from '@expo/vector-icons';
 import PopularCarousel from '../components/PopularCarousel';
 import RecommendedCarousel from '../components/RecommendedCarousel';
 import BottomNav from '../components/BottomNav';
+import Profile from '../screens/Profile';
+import { EvilIcons } from '@expo/vector-icons';
 
 export default function ExploreHeader() {
     const [selectedTab, setSelectedTab]= useState('location');
@@ -20,16 +22,19 @@ export default function ExploreHeader() {
         <Text style={styles.aspenText}>Aspen</Text>
         </View>
         <View style={styles.locationView}>
-          <AntDesign name="enviromento" size={16} color="blue" />
+          <AntDesign name="enviromento" size={16} color="#1dafe2" />
           <Text style={styles.locationText}>Aspen, USA</Text>
           <AntDesign name="down" size={12} color="blue" />
         </View>
       </View>
-      <TextInput
-        style={styles.searchInput}
-        placeholder="Find things to do"
-        placeholderTextColor="#a1a1a1"
-      />
+      <View style={styles.searchContainer}>
+          <EvilIcons name="search" size={24} color="black" style={styles.searchIcon} />
+          <TextInput
+            style={styles.searchInput}
+            placeholder="Find things to do"
+            placeholderTextColor="#a1a1a1"
+          />
+        </View>
       <View style={styles.tabs}>
                 <TouchableOpacity style={selectedTab === 'location' ? styles.tabSelected : styles.tab} onPress={() => handleTabPress('location')}>
                     <Text style={selectedTab === 'location' ? styles.tabTextSelected : styles.tabText}>Location</Text>
@@ -59,19 +64,23 @@ export default function ExploreHeader() {
                 <Text style={styles.Populartext}>Recommended</Text>
                 </View>
                 <RecommendedCarousel/>
+
                 </>
                 
                 
-            ):console.log('gg')}
+            ):null}
+            
             </ScrollView>
             <BottomNav/>
+            
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    // padding: 20,
+    paddingTop: 20,
+    paddingLeft:20,
     backgroundColor: 'white',
     flex:1,
   },
@@ -85,10 +94,10 @@ const styles = StyleSheet.create({
     top:20,
   },
   exploreText: {
-    fontSize: 16,
+    fontSize: 18,
   },
   aspenText: {
-    fontSize: 30,
+    fontSize: 38,
     fontWeight: 'bold',
   },
   locationView: {
@@ -100,15 +109,25 @@ const styles = StyleSheet.create({
     marginRight: 5,
     color: '#1dafe2',
   },
-  searchInput: {
-    height: 40,
+  searchContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    height: 50,
     borderColor: '#e1e1e1',
     borderWidth: 1,
     borderRadius: 20,
-    paddingLeft: 20,
+    paddingLeft: 10,
     marginBottom: 20,
-    backgroundColor: '#f5f5f5',
-    marginTop:20,
+    backgroundColor: '#f7fbff',
+    marginTop: 20,
+  },
+  searchIcon: {
+    marginRight: 10,
+  },
+  searchInput: {
+    flex: 1,
+    height: '100%',
+    fontSize: 16,
   },
   popularView:{
     display:'flex',
@@ -120,6 +139,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight:'bold',
     marginTop:20,
+    marginBottom:10,
     marginLeft:20,
 
   },

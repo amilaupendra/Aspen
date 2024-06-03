@@ -8,52 +8,22 @@ import {
 import React from "react";
 import { Ionicons } from "@expo/vector-icons";
 import { Entypo } from "@expo/vector-icons";
+import RecPlace1 from '../../assets/recplace1.jpg';
+import RecPlace2 from '../../assets/recplace2.jpg';
 
 export default function PopularCarousel() {
   const places = [
     {
-      name: "Alley place",
-      image: "https://picsum.photos/200/300",
+      name: "Explore Aspen",
+      image: RecPlace1,
       quality: "2N/5D",
     },
     {
-      name: "Coeurdes Alpes",
-      image: "https://picsum.photos/200/300",
+      name: "Luxurious Aspen",
+      image: RecPlace2,
       quality: "2N/5D",
     },
-    { name: "Swiz", image: "https://picsum.photos/200/300", quality: "2N/5D" },
-    { name: "nepal", image: "https://picsum.photos/200/300", quality: "2N/5D" },
-    { name: "kandy", image: "https://picsum.photos/200/300", quality: "2N/5D" },
-    {
-      name: "Place 2",
-      image: "https://picsum.photos/200/300",
-      quality: "2N/5D",
-    },
-    {
-      name: "Place 2",
-      image: "https://picsum.photos/200/300",
-      quality: "2N/5D",
-    },
-    {
-      name: "Place 2",
-      image: "https://picsum.photos/200/300",
-      quality: "2N/5D",
-    },
-    {
-      name: "Place 2",
-      image: "https://picsum.photos/200/300",
-      quality: "2N/5D",
-    },
-    {
-      name: "Place 2",
-      image: "https://picsum.photos/200/300",
-      quality: "2N/5D",
-    },
-    {
-      name: "Place 2",
-      image: "https://picsum.photos/200/300",
-      quality: "2N/5D",
-    },
+    
   ];
 
   return (
@@ -63,15 +33,16 @@ export default function PopularCarousel() {
           <View key={index} style={styles.carouselItem}>
             <View style={styles.imageItem}>
               <ImageBackground
-                source={{ uri: place.image }}
+                source={ place.image}
                 resizeMode="cover"
                 style={styles.image}
               ></ImageBackground>
               </View>
 
               <View style={styles.likeContainer}>
-                <Text style={styles.qualityContainer}>{place.name}</Text>
+                <Text style={styles.qualityContainer}>{place.quality}</Text>
               </View>
+              <Text style={styles.nameContainer}>{place.name}</Text>
             
           </View>
         ))}
@@ -84,11 +55,11 @@ const styles = StyleSheet.create({
   container: {
     width: "100%",
     flexDirection: "row",
-    padding: 5,
+    // paddingTop: 5,
   },
   carouselItem: {
-    width: 280,
-    height: 200,
+    width: 250,
+    height: 170,
     marginRight: 10,
     //   borderRadius: 20,
     overflow: "hidden",
@@ -98,8 +69,8 @@ const styles = StyleSheet.create({
 
   },
   imageItem: {
-    width: 250,
-    height: 150,
+    width: 230,
+    height: 130,
     borderRadius: 20,
     overflow:'hidden'
 
@@ -141,7 +112,7 @@ const styles = StyleSheet.create({
     alignItems: "flex-end",
   },
   qualityContainer: {
-    backgroundColor: "green",
+    backgroundColor: "#279e5d",
     paddingVertical: 2,
     paddingHorizontal:8,
     borderRadius: 20,
@@ -153,4 +124,12 @@ const styles = StyleSheet.create({
 
     position:'absolute'
   },
+  nameContainer:{
+    // fontWeight: 'bold',
+    fontSize: 16,
+    text:'left',
+    justifyContent:'flex-start',
+    alignSelf:'flex-start',
+    marginLeft:20,
+  }
 });
