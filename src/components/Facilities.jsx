@@ -5,6 +5,8 @@ import { MaterialIcons } from "@expo/vector-icons";
 import { FontAwesome } from "@expo/vector-icons";
 import { FontAwesome5 } from "@expo/vector-icons";
 
+
+// Facilities component
 export default function Facilities() {
   return (
     <View style={styles.container}>

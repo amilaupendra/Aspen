@@ -6,11 +6,10 @@ import {
   ScrollView,
 } from "react-native";
 import React from "react";
-import { Ionicons } from "@expo/vector-icons";
-import { Entypo } from "@expo/vector-icons";
-import RecPlace1 from '../../assets/recplace1.jpg';
-import RecPlace2 from '../../assets/recplace2.jpg';
+import RecPlace1 from "../../assets/recplace1.jpg";
+import RecPlace2 from "../../assets/recplace2.jpg";
 
+//Recommended place component
 export default function PopularCarousel() {
   const places = [
     {
@@ -23,7 +22,6 @@ export default function PopularCarousel() {
       image: RecPlace2,
       quality: "2N/5D",
     },
-    
   ];
 
   return (
@@ -33,17 +31,16 @@ export default function PopularCarousel() {
           <View key={index} style={styles.carouselItem}>
             <View style={styles.imageItem}>
               <ImageBackground
-                source={ place.image}
+                source={place.image}
                 resizeMode="cover"
                 style={styles.image}
               ></ImageBackground>
-              </View>
+            </View>
 
-              <View style={styles.likeContainer}>
-                <Text style={styles.qualityContainer}>{place.quality}</Text>
-              </View>
-              <Text style={styles.nameContainer}>{place.name}</Text>
-            
+            <View style={styles.likeContainer}>
+              <Text style={styles.qualityContainer}>{place.quality}</Text>
+            </View>
+            <Text style={styles.nameContainer}>{place.name}</Text>
           </View>
         ))}
       </ScrollView>
@@ -64,20 +61,17 @@ const styles = StyleSheet.create({
     //   borderRadius: 20,
     overflow: "hidden",
     // backgroundColor:'green',
-    justifyContent:'center',
-    alignItems:'center'
-
+    justifyContent: "center",
+    alignItems: "center",
   },
   imageItem: {
     width: 230,
     height: 130,
     borderRadius: 20,
-    overflow:'hidden'
-
-    
+    overflow: "hidden",
   },
   image: {
-    flex:1,
+    flex: 1,
     justifyContent: "flex-end",
   },
   textContainer: {
@@ -114,23 +108,23 @@ const styles = StyleSheet.create({
   qualityContainer: {
     backgroundColor: "#279e5d",
     paddingVertical: 2,
-    paddingHorizontal:8,
+    paddingHorizontal: 8,
     borderRadius: 20,
     borderColor: "white",
     borderWidth: 2,
     top: -20,
-    right:-120,
-    color:'white',
+    right: -120,
+    color: "white",
     // justifyContent:'flex-end',
 
-    position:'absolute'
+    position: "absolute",
   },
-  nameContainer:{
+  nameContainer: {
     // fontWeight: 'bold',
     fontSize: 16,
-    text:'left',
-    justifyContent:'flex-start',
-    alignSelf:'flex-start',
-    marginLeft:20,
-  }
+    text: "left",
+    justifyContent: "flex-start",
+    alignSelf: "flex-start",
+    marginLeft: 20,
+  },
 });

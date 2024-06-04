@@ -8,7 +8,6 @@ import {
   Image,
   TouchableOpacity,
   Alert,
-  ScrollView,
 } from "react-native";
 import { useState } from "react";
 import { Ionicons } from "@expo/vector-icons";
@@ -16,7 +15,7 @@ import { Entypo } from "@expo/vector-icons";
 import { AntDesign } from "@expo/vector-icons";
 import Facilities from "./Facilities";
 
-
+//Polpular place modal component
 export default function DetailsModal({ visible, place, onClose }) {
   if (!place) return null;
 
@@ -199,12 +198,12 @@ const styles = StyleSheet.create({
     textAlign: "left",
   },
   collapsedTextView: {
-    height: 80, // Fixed height for collapsed view
+    height: 80, 
     overflow: "hidden",
     textAlign: "justify",
   },
   expandedTextView: {
-    // No height restriction for expanded view
+    // No height for expanded view
   },
   readMoreText: {
     color: "#1dafe2",

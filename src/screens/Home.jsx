@@ -6,52 +6,72 @@ import {
   SafeAreaView,
   TouchableOpacity,
 } from "react-native";
-import { useCallback } from 'react';
+import { useCallback } from "react";
 import React from "react";
-import HomeImg from '../../assets/homeimg.jpg';
+import HomeImg from "../../assets/homeimg.jpg";
 import { StatusBar } from "expo-status-bar";
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { useFonts } from 'expo-font';
-import * as SplashScreen from 'expo-splash-screen';
+import { useFonts } from "expo-font";
+import * as SplashScreen from "expo-splash-screen";
 
-
-
-const Home = ({navigation}) => {
-
+// Landing Page Component
+const Home = ({ navigation }) => {
+  // Load custom font
   const [fontsLoaded, fontError] = useFonts({
-    'Hiatus': require('../../assets/fonts/Hiatus.otf'),
+    Hiatus: require("../../assets/fonts/Hiatus.otf"),
   });
 
+  // Function to hide SplashScreen when fonts are loaded
   const onLayoutRootView = useCallback(async () => {
     if (fontsLoaded || fontError) {
       await SplashScreen.hideAsync();
     }
   }, [fontsLoaded, fontError]);
 
+  // Render nothing if fonts are still loading
   if (!fontsLoaded && !fontError) {
     return null;
   }
 
-  
-  console.log(navigation); // Check if navigation prop is received
-
-  
   return (
     <SafeAreaView style={styles.container}>
-              <StatusBar style="auto" />
+      <StatusBar style="auto" />
 
+      {/* Background Image */}
       <ImageBackground source={HomeImg} resizeMode="cover" style={styles.image}>
-        <View style={{width:'100%', height:600,}}>
-        <Text style={{fontFamily: 'Hiatus',fontSize: 100, color:'white', alignSelf:'center'}}>Aspen</Text>
-
+        <View
+          style={{ width: "100%", height: 600 }}
+          onLayout={onLayoutRootView} // Call onLayoutRootView function when layout is complete
+        >
+          {/* Title Text */}
+          <Text
+            style={{
+              fontFamily: "Hiatus",
+              fontSize: 100,
+              color: "white",
+              alignSelf: "center",
+            }}
+          >
+            Aspen
+          </Text>
         </View>
-        {/* <Text style={{ fontFamily: 'Hiatus', fontSize: 30, color:'white' }}>Inter Black</Text> */}
+
+        {/* Explore Section */}
         <View style={styles.explore}>
-        <Text style={{fontSize:26, color:'white', marginLeft: 20}}>Plan your</Text>
-        <Text style={{fontSize:40, color:'white', marginLeft: 20}}>Luxurius</Text>
-        <Text style={{fontSize:40, color:'white', marginLeft: 20}}>Vacation</Text>
-        <TouchableOpacity onPress={()=>navigation.navigate("Explore")} style={styles.button}>
+          <Text style={{ fontSize: 26, color: "white", marginLeft: 20 }}>
+            Plan your
+          </Text>
+          <Text style={{ fontSize: 40, color: "white", marginLeft: 20 }}>
+            Luxurious
+          </Text>
+          <Text style={{ fontSize: 40, color: "white", marginLeft: 20 }}>
+            Vacation
+          </Text>
+
+          {/* Explore Button */}
+          <TouchableOpacity
+            onPress={() => navigation.navigate("Explore")}
+            style={styles.button}
+          >
             <Text style={styles.buttonText}>Explore</Text>
           </TouchableOpacity>
         </View>
@@ -62,6 +82,7 @@ const Home = ({navigation}) => {
 
 export default Home;
 
+// Stylesheet
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -71,36 +92,26 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
   },
-  text: {
-    color: "white",
-    fontSize: 60,
-    lineHeight: 84,
-    fontWeight: "bold",
-    textAlign: "center",
-    fontFamily: 'Hiatus'
-  },
   button: {
-    backgroundColor: '#1b6ae4',
+    backgroundColor: "#1b6ae4",
     paddingVertical: 10,
     paddingHorizontal: 20,
     borderRadius: 5,
     marginTop: 20,
-    width: '90%',
-    alignSelf: 'center',
-
+    width: "90%",
+    alignSelf: "center",
   },
-  explore:{
-    flex:1,
-    position: 'absolute',
+  explore: {
+    flex: 1,
+    position: "absolute",
     bottom: 0,
     marginLeft: 20,
     marginBottom: 20,
-    width: '100%',
-    alignSelf: 'center',
-
+    width: "100%",
+    alignSelf: "center",
   },
-  buttonText:{
-    color: 'white',
-    textAlign: 'center'
-  }
+  buttonText: {
+    color: "white",
+    textAlign: "center",
+  },
 });

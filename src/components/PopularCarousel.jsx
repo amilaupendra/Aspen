@@ -12,14 +12,9 @@ import { Entypo } from '@expo/vector-icons';
 import Place1 from '../../assets/place1.jpg';
 import Place2 from '../../assets/place2.jpg';
 import PopularPlaceCard from '../components/PopularPlaceCard';
-
-
-
-
-
 import Place3 from '../../assets/place3.jpg';
 
-
+//popular carousel
 export default function PopularCarousel() {
   const places = [
     { name: "Alley place", image: Place1, rating: 4.5 },
@@ -36,6 +31,7 @@ export default function PopularCarousel() {
   const [modalVisible, setModalVisible] = useState(false);
   const [selectedPlace, setSelectedPlace] = useState(null);
  
+  //function to modal visible
   const handlePress = (place) => {
     setSelectedPlace(place);
     setModalVisible(true);
@@ -123,8 +119,6 @@ const styles = StyleSheet.create({
   },
   likeContainer:{
     flexDirection: "row",
-    
-    
   },
   heartContainer: {
     width: 30,

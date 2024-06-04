@@ -3,6 +3,8 @@ import { View, StyleSheet, TouchableOpacity } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { useNavigation, useRoute } from '@react-navigation/native';
 
+
+//Bottom Navbar
 export default function BottomNav() {
   const navigation = useNavigation();
   const route = useRoute();
@@ -53,10 +55,11 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-around",
     alignItems: "center",
-    backgroundColor: "#ffffff", // Change background color as per your preference
+    backgroundColor: "#ffffff", 
     height: 60,
-    borderTopWidth: 1,
+    borderTopWidth: 0.2,
     borderTopColor: "gray",
+    borderRadius:20,
     position: "absolute",
     bottom: 0,
     left: 0,

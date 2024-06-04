@@ -7,19 +7,20 @@ import {
   TouchableOpacity,
   ScrollView,
 } from "react-native";
-import {Picker} from '@react-native-picker/picker';
+import { Picker } from "@react-native-picker/picker";
 import { AntDesign } from "@expo/vector-icons";
 import PopularCarousel from "../components/PopularCarousel";
 import RecommendedCarousel from "../components/RecommendedCarousel";
 import BottomNav from "../components/BottomNav";
-import Profile from "../screens/Profile";
 import { EvilIcons } from "@expo/vector-icons";
 
+//Explore Screen Component
 export default function ExploreHeader() {
-  const [location, setLocation] = useState('Aspen, USA');
+  const [location, setLocation] = useState("Aspen, USA");
   const locationList = ["Aspen, USA", "France", "SriLanka", "Germany"];
   const [selectedTab, setSelectedTab] = useState("location");
 
+  // Function to handle tab selection
   const handleTabPress = (tabName) => {
     setSelectedTab(tabName);
   };
@@ -33,17 +34,24 @@ export default function ExploreHeader() {
           </View>
           <View style={styles.locationView}>
             <AntDesign name="enviromento" size={16} color="#1dafe2" />
-            {/* <Text style={styles.locationText}>Aspen, USA</Text>
-          <AntDesign name="down" size={12} color="blue" /> */}
-          {location != null? (<><Text style={styles.locationText}>{location}</Text></> ):null}
-          
+            {location != null ? (
+              <>
+                <Text style={styles.locationText}>{location}</Text>
+              </>
+            ) : null}
+
             <Picker
               selectedValue={location}
-              style={{width: 50, fontSize:'10', color:'blue', marginRight:2 }}
+              style={{
+                width: 50,
+                fontSize: "10",
+                color: "blue",
+                marginRight: 2,
+              }}
               onValueChange={(itemValue) => setLocation(itemValue)}
             >
               {locationList.map((loc) => (
-                <Picker.Item key={loc}  label={loc} value={loc} />
+                <Picker.Item key={loc} label={loc} value={loc} />
               ))}
             </Picker>
           </View>
@@ -62,78 +70,84 @@ export default function ExploreHeader() {
           />
         </View>
         <View style={styles.tabs}>
-          <TouchableOpacity
-            style={selectedTab === "location" ? styles.tabSelected : styles.tab}
-            onPress={() => handleTabPress("location")}
-          >
-            <Text
+          <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
+            <TouchableOpacity
               style={
-                selectedTab === "location"
-                  ? styles.tabTextSelected
-                  : styles.tabText
+                selectedTab === "location" ? styles.tabSelected : styles.tab
               }
+              onPress={() => handleTabPress("location")}
             >
-              Location
-            </Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            style={selectedTab === "hotels" ? styles.tabSelected : styles.tab}
-            onPress={() => handleTabPress("hotels")}
-          >
-            <Text
+              <Text
+                style={
+                  selectedTab === "location"
+                    ? styles.tabTextSelected
+                    : styles.tabText
+                }
+              >
+                Location
+              </Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={selectedTab === "hotels" ? styles.tabSelected : styles.tab}
+              onPress={() => handleTabPress("hotels")}
+            >
+              <Text
+                style={
+                  selectedTab === "hotels"
+                    ? styles.tabTextSelected
+                    : styles.tabText
+                }
+              >
+                Hotels
+              </Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={selectedTab === "food" ? styles.tabSelected : styles.tab}
+              onPress={() => handleTabPress("food")}
+            >
+              <Text
+                style={
+                  selectedTab === "food"
+                    ? styles.tabTextSelected
+                    : styles.tabText
+                }
+              >
+                Food
+              </Text>
+            </TouchableOpacity>
+            <TouchableOpacity
               style={
-                selectedTab === "hotels"
-                  ? styles.tabTextSelected
-                  : styles.tabText
+                selectedTab === "adventure" ? styles.tabSelected : styles.tab
               }
+              onPress={() => handleTabPress("adventure")}
             >
-              Hotels
-            </Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            style={selectedTab === "food" ? styles.tabSelected : styles.tab}
-            onPress={() => handleTabPress("food")}
-          >
-            <Text
+              <Text
+                style={
+                  selectedTab === "adventure"
+                    ? styles.tabTextSelected
+                    : styles.tabText
+                }
+              >
+                Adventure
+              </Text>
+            </TouchableOpacity>
+            <TouchableOpacity
               style={
-                selectedTab === "food" ? styles.tabTextSelected : styles.tabText
+                selectedTab === "activities" ? styles.tabSelected : styles.tab
               }
+              onPress={() => handleTabPress("activities")}
             >
-              Food
-            </Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            style={
-              selectedTab === "adventure" ? styles.tabSelected : styles.tab
-            }
-            onPress={() => handleTabPress("adventure")}
-          >
-            <Text
-              style={
-                selectedTab === "adventure"
-                  ? styles.tabTextSelected
-                  : styles.tabText
-              }
-            >
-              Adventure
-            </Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            style={
-              selectedTab === "activities" ? styles.tabSelected : styles.tab
-            }
-            onPress={() => handleTabPress("activities")}
-          >
-            <Text
-              style={
-                selectedTab === "activities"
-                  ? styles.tabTextSelected
-                  : styles.tabText
-              }
-            >
-              Activities
-            </Text>
-          </TouchableOpacity>
+              <Text
+                style={
+                  selectedTab === "activities"
+                    ? styles.tabTextSelected
+                    : styles.tabText
+                }
+              >
+                Activities
+              </Text>
+            </TouchableOpacity>
+          </ScrollView>
         </View>
 
         {selectedTab == "location" ? (
@@ -142,14 +156,17 @@ export default function ExploreHeader() {
               <Text style={styles.Populartext}>Popular</Text>
               <Text style={styles.seeAllText}>See all</Text>
             </View>
+            {/* Popular Carousel */}
             <PopularCarousel />
             <View style={styles.popularView}>
               <Text style={styles.Populartext}>Recommended</Text>
             </View>
+            {/* Recommended Carousel */}
             <RecommendedCarousel />
           </>
         ) : null}
       </ScrollView>
+      {/* Bottom Navigation */}
       <BottomNav />
     </View>
   );
@@ -228,12 +245,13 @@ const styles = StyleSheet.create({
   },
   tabs: {
     flexDirection: "row",
+    overflow: "scroll",
   },
   tab: {
     fontSize: 15,
     paddingHorizontal: 30,
     paddingTop: 10,
-    paddingRight:2,
+    paddingRight: 2,
     borderRadius: 50,
   },
 
