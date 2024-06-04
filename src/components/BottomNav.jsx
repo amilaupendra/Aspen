@@ -24,25 +24,25 @@ export default function BottomNav() {
         style={styles.navItem}
         onPress={() => handlePress("Home", "Home")}
       >
-        <Ionicons name="home" size={24} color={selectedTab === "Home" ? "#1dafe2" : "black"} />
+        <Ionicons name="home" size={24} color={selectedTab === "Home" ? "#1dafe2" : "#e8e9ea"} />
       </TouchableOpacity>
       <TouchableOpacity
         style={styles.navItem}
         onPress={() => handlePress("Explore", "Explore")}
       >
-        <Ionicons name="map" size={24} color={selectedTab === "Explore" ? "#1dafe2" : "black"} />
+        <Ionicons name="map" size={24} color={selectedTab === "Explore" ? "#1dafe2" : "#e8e9ea"} />
       </TouchableOpacity>
       <TouchableOpacity
         style={styles.navItem}
         onPress={() => handlePress("Destination", "Destination")}
       >
-        <Ionicons name="heart-outline" size={24} color={selectedTab === "Destination" ? "#1dafe2" : "black"} />
+        <Ionicons name="heart-outline" size={24} color={selectedTab === "Destination" ? "#1dafe2" : "#e8e9ea"} />
       </TouchableOpacity>
       <TouchableOpacity
         style={styles.navItem}
         onPress={() => handlePress("Profile", "Profile")}
       >
-        <Ionicons name="person" size={24} color={selectedTab === "Profile" ? "#1dafe2" : "black"} />
+        <Ionicons name="person" size={24} color={selectedTab === "Profile" ? "#1dafe2" : "#e8e9ea"}/>
       </TouchableOpacity>
     </View>
   );

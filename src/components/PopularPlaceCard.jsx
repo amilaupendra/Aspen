@@ -28,7 +28,7 @@ export default function DetailsModal({ visible, place, onClose }) {
 
   return (
     <Modal
-      animationType="slide"
+      animationType="fade"
       transparent={true}
       visible={visible}
       onRequestClose={onClose}
@@ -44,7 +44,10 @@ export default function DetailsModal({ visible, place, onClose }) {
             <Ionicons name="heart" size={24} color="red" />
           </View>
           <Image source={place.image} style={styles.image} />
+          <View style={styles.nameContaienr}>
           <Text style={styles.name}>{place.name}</Text>
+          <TouchableOpacity><Text style={{fontWeight:'bold', color:'#1dafe2'}}>Show map</Text></TouchableOpacity>
+          </View>
           <View style={styles.ratingContainer}>
             <Entypo name="star" size={20} color="#fadf05" />
             <Text style={styles.rating}>{place.rating} (Reviews):</Text>
@@ -129,6 +132,12 @@ const styles = StyleSheet.create({
     height: "40%",
     marginBottom: 20,
     borderRadius: 20,
+  },
+  nameContaienr:{
+    width:'100%',
+    flexDirection:'row',
+    justifyContent:'space-between',
+    alignItems:'center'
   },
   name: {
     fontSize: 24,

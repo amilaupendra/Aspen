@@ -6,15 +6,33 @@ import {
   SafeAreaView,
   TouchableOpacity,
 } from "react-native";
+import { useCallback } from 'react';
 import React from "react";
 import HomeImg from '../../assets/homeimg.jpg';
 import { StatusBar } from "expo-status-bar";
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { useFonts } from 'expo-font';
+import * as SplashScreen from 'expo-splash-screen';
 
 
 
 const Home = ({navigation}) => {
+
+  const [fontsLoaded, fontError] = useFonts({
+    'Hiatus': require('../../assets/fonts/Hiatus.otf'),
+  });
+
+  const onLayoutRootView = useCallback(async () => {
+    if (fontsLoaded || fontError) {
+      await SplashScreen.hideAsync();
+    }
+  }, [fontsLoaded, fontError]);
+
+  if (!fontsLoaded && !fontError) {
+    return null;
+  }
+
   
   console.log(navigation); // Check if navigation prop is received
 
@@ -24,9 +42,13 @@ const Home = ({navigation}) => {
               <StatusBar style="auto" />
 
       <ImageBackground source={HomeImg} resizeMode="cover" style={styles.image}>
-        <Text style={styles.text}>Aspen</Text>
+        <View style={{width:'100%', height:600,}}>
+        <Text style={{fontFamily: 'Hiatus',fontSize: 100, color:'white', alignSelf:'center'}}>Aspen</Text>
+
+        </View>
+        {/* <Text style={{ fontFamily: 'Hiatus', fontSize: 30, color:'white' }}>Inter Black</Text> */}
         <View style={styles.explore}>
-        <Text style={{fontSize:20, color:'white', marginLeft: 20}}>Plan your</Text>
+        <Text style={{fontSize:26, color:'white', marginLeft: 20}}>Plan your</Text>
         <Text style={{fontSize:40, color:'white', marginLeft: 20}}>Luxurius</Text>
         <Text style={{fontSize:40, color:'white', marginLeft: 20}}>Vacation</Text>
         <TouchableOpacity onPress={()=>navigation.navigate("Explore")} style={styles.button}>
@@ -55,9 +77,10 @@ const styles = StyleSheet.create({
     lineHeight: 84,
     fontWeight: "bold",
     textAlign: "center",
+    fontFamily: 'Hiatus'
   },
   button: {
-    backgroundColor: '#0858D0',
+    backgroundColor: '#1b6ae4',
     paddingVertical: 10,
     paddingHorizontal: 20,
     borderRadius: 5,

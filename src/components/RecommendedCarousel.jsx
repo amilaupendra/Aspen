@@ -120,6 +120,7 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     top: -20,
     right:-120,
+    color:'white',
     // justifyContent:'flex-end',
 
     position:'absolute'

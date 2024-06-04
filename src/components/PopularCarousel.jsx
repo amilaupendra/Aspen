@@ -23,7 +23,7 @@ import Place3 from '../../assets/place3.jpg';
 export default function PopularCarousel() {
   const places = [
     { name: "Alley place", image: Place1, rating: 4.5 },
-    { name: "Swiz", image: Place2, rating: 4.8 },
+    { name: "Coeurdes Alpes", image: Place2, rating: 4.8 },
     { name: "nepal", image: Place3, rating: 4.8 },
     // { name: "kandy", image: "https://picsum.photos/200/300", rating: 4.8 },
     // { name: "Place 2", image: "https://picsum.photos/200/300", rating: 4.8 },
@@ -57,9 +57,9 @@ export default function PopularCarousel() {
                 <Entypo name="star" size={20} color="#fadf05" />
                   <Text style={styles.ratingText}>{place.rating}</Text>
                 </View>
-                <View style={styles.likeContainer}>
-                  <Ionicons name="heart-circle" size={24} color="red" />
-                </View>
+                <View style={styles.heartContainer}>
+            <Ionicons name="heart" size={24} color="red" />
+          </View>
               </View>
             </ImageBackground>
           </TouchableOpacity>
@@ -124,5 +124,15 @@ const styles = StyleSheet.create({
   likeContainer:{
     flexDirection: "row",
     
-  }
+    
+  },
+  heartContainer: {
+    width: 30,
+    height: 30,
+    borderRadius: 20,
+    justifyContent: "center",
+    backgroundColor:'white',
+    alignItems:'center'
+  },
+
 });
